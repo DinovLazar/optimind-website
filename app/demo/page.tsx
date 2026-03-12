@@ -4,7 +4,7 @@ import DemoClient from './DemoClient'
 export const metadata: Metadata = {
   title: 'Live Demo',
   description:
-    "Experience an interactive demo of OptiMind's Customer Support Agent — coming soon. Register to be notified.",
+    "Chat with Aria — OptiMind's AI assistant. Experience a live demo of the kind of customer support agent we build for your business.",
 }
 
 export default function DemoPage() {

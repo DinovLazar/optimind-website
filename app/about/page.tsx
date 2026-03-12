@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 }
 
 const team = [
-  { initials: 'LD', name: 'Larry Davis',    role: 'Co-Founder & Developer' },
-  { initials: 'PJ', name: 'Petar Jakimov',  role: 'Co-Founder & Developer' },
-  { initials: 'AJ', name: 'Andrej Jakimov', role: 'Consultant & Partner'   },
+  { initials: 'LD', name: 'Larry Davis',    role: 'Co-Founder & Developer'  },
+  { initials: 'PJ', name: 'Peter Jameson',  role: 'Co-Founder & Researcher' },
+  { initials: 'AJ', name: 'Andrew Jenkins', role: 'Consultant & Partner'    },
 ]
 
 const values = [
@@ -87,20 +87,25 @@ export default function AboutPage() {
             </div>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-2xl">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-2xl items-stretch">
             {team.map((member, i) => (
-              <AnimatedSection key={member.name} delay={i * 0.1}>
-                <div className="p-6 rounded-2xl border border-[#181818] bg-[#0e0e0e] hover:border-[#1a3a6e]/30 transition-all hover:shadow-[0_0_28px_rgba(26,58,110,0.10)] text-center group">
+              <AnimatedSection key={member.name} delay={i * 0.1} className="h-full">
+                <div className="h-full flex flex-col p-6 rounded-2xl border border-[#181818] bg-[#0e0e0e] hover:border-[#1a3a6e]/30 transition-all hover:shadow-[0_0_28px_rgba(26,58,110,0.10)] text-center group">
                   {/* Avatar */}
-                  <div className="w-[68px] h-[68px] rounded-full bg-gradient-to-br from-[#1a3a6e] to-[#0d1f3e] border border-[#2a5298]/30 flex items-center justify-center mx-auto mb-4 group-hover:border-[#3b6fd4]/35 transition-colors">
-                    <span className="font-heading font-bold text-white text-[18px] tracking-widest select-none">
-                      {member.initials}
-                    </span>
+                  <div className="flex-1 flex flex-col items-center justify-start">
+                    {/* TODO: replace with <Image> when photo is ready */}
+                    <div className="relative w-[68px] h-[68px] mx-auto mb-4">
+                      <div className="w-full h-full rounded-full bg-gradient-to-br from-[#1a3a6e] to-[#0d1f3e] border border-[#2a5298]/30 flex items-center justify-center group-hover:border-[#3b6fd4]/35 transition-colors">
+                        <span className="font-heading font-bold text-white text-[18px] tracking-widest select-none">
+                          {member.initials}
+                        </span>
+                      </div>
+                    </div>
+                    <h3 className="font-heading font-bold text-white text-[17px] mb-1">
+                      {member.name}
+                    </h3>
+                    <p className="text-[#555555] text-sm">{member.role}</p>
                   </div>
-                  <h3 className="font-heading font-bold text-white text-[17px] mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-[#555555] text-sm">{member.role}</p>
                 </div>
               </AnimatedSection>
             ))}
