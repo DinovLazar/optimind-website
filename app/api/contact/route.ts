@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
 
     // ── Notification email to OptiMind ──
     await resend.emails.send({
-      from:    'OptiMind Contact <onboarding@resend.dev>', // update once domain verified
+      from:    'OptiMind Contact <hello@optimind000.com>',
       to:      'hello@optimind000.com',
       reply_to: email,
       subject: `New Contact: ${name}${company ? ` — ${company}` : ''}`,
