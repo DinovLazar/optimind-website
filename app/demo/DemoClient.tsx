@@ -3,6 +3,12 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Send } from 'lucide-react'
+import Link from 'next/link'
+
+const MESSAGE_LIMIT = 5
+
+const FINAL_BOT_MESSAGE =
+  "That's all for the demo! If you'd like to learn more or get started with OptiMind, feel free to reach out to us directly. We'd love to chat. 👋"
 
 type Message = {
   id: string
@@ -87,6 +93,8 @@ export default function DemoClient() {
   const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [messageCount, setMessageCount] = useState(0)
+  const [isLocked, setIsLocked] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -96,17 +104,18 @@ export default function DemoClient() {
     (lastMsg?.role === 'user' ||
       (lastMsg?.role === 'assistant' && lastMsg.content === ''))
 
-  // Auto-scroll to bottom whenever messages or typing state changes
+  // Auto-scroll to bottom whenever messages, typing state, or locked state changes
   useEffect(() => {
     const el = scrollRef.current
     if (el) el.scrollTop = el.scrollHeight
-  }, [messages, showTyping])
+  }, [messages, showTyping, isLocked])
 
   const sendMessage = useCallback(
     async (content: string) => {
       const trimmed = content.trim()
-      if (!trimmed || isLoading) return
+      if (!trimmed || isLoading || isLocked) return
 
+      const newCount = messageCount + 1
       const userMsg: Message = {
         id: `user-${Date.now()}`,
         role: 'user',
@@ -115,6 +124,25 @@ export default function DemoClient() {
       const updatedMessages = [...messages, userMsg]
       setMessages(updatedMessages)
       setInput('')
+      setMessageCount(newCount)
+
+      // On the 5th message skip the API and show the hardcoded closing message
+      if (newCount >= MESSAGE_LIMIT) {
+        setIsLoading(true)
+        await new Promise<void>((resolve) => setTimeout(resolve, 800))
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: `assistant-final-${Date.now()}`,
+            role: 'assistant',
+            content: FINAL_BOT_MESSAGE,
+          },
+        ])
+        setIsLoading(false)
+        setIsLocked(true)
+        return
+      }
+
       setIsLoading(true)
 
       try {
@@ -172,7 +200,7 @@ export default function DemoClient() {
         inputRef.current?.focus()
       }
     },
-    [messages, isLoading]
+    [messages, isLoading, messageCount, isLocked]
   )
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -191,6 +219,10 @@ export default function DemoClient() {
   const visibleMessages = messages.filter(
     (m) => !(m.role === 'assistant' && m.content === '')
   )
+
+  const counterText = isLocked
+    ? 'Demo limit reached'
+    : `${messageCount} / ${MESSAGE_LIMIT} messages used`
 
   return (
     <div className="h-screen bg-gray-50 dark:bg-[#0a0a0a] flex overflow-hidden">
@@ -222,9 +254,13 @@ export default function DemoClient() {
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: 0.2 + i * 0.08 }}
-                  onClick={() => sendMessage(q)}
-                  disabled={isLoading}
-                  className="text-left px-4 py-3 rounded-xl border border-gray-200 dark:border-[#1a1a1a] bg-white dark:bg-[#0d0d0d] text-gray-500 dark:text-[#777777] text-sm hover:border-[#1a3a6e]/50 hover:text-gray-700 dark:hover:text-[#aaaaaa] hover:bg-gray-50 dark:hover:bg-[#111111] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed group"
+                  onClick={isLocked ? undefined : () => sendMessage(q)}
+                  disabled={isLoading || isLocked}
+                  className={`text-left px-4 py-3 rounded-xl border border-gray-200 dark:border-[#1a1a1a] bg-white dark:bg-[#0d0d0d] text-gray-500 dark:text-[#777777] text-sm transition-all duration-200 group ${
+                    isLocked
+                      ? 'opacity-40 cursor-not-allowed'
+                      : 'hover:border-[#1a3a6e]/50 hover:text-gray-700 dark:hover:text-[#aaaaaa] hover:bg-gray-50 dark:hover:bg-[#111111] disabled:opacity-40 disabled:cursor-not-allowed'
+                  }`}
                 >
                   <span className="text-gray-300 dark:text-[#2a2a2a] group-hover:text-gray-400 dark:group-hover:text-[#444444] mr-2 transition-colors">
                     →
@@ -232,6 +268,17 @@ export default function DemoClient() {
                   {q}
                 </motion.button>
               ))}
+
+              {isLocked && (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
+                  className="text-gray-400 dark:text-gray-600 text-xs mt-1"
+                >
+                  Demo ended — reach out to us for a full conversation
+                </motion.p>
+              )}
             </div>
           </motion.div>
         </div>
@@ -262,14 +309,23 @@ export default function DemoClient() {
             {STARTER_QUESTIONS.map((q) => (
               <button
                 key={q}
-                onClick={() => sendMessage(q)}
-                disabled={isLoading}
-                className="px-3 py-1.5 rounded-lg border border-gray-200 dark:border-[#1f1f1f] bg-white dark:bg-[#0e0e0e] text-gray-500 dark:text-[#666666] text-xs hover:border-[#1a3a6e]/40 hover:text-gray-700 dark:hover:text-[#999999] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                onClick={isLocked ? undefined : () => sendMessage(q)}
+                disabled={isLoading || isLocked}
+                className={`px-3 py-1.5 rounded-lg border border-gray-200 dark:border-[#1f1f1f] bg-white dark:bg-[#0e0e0e] text-gray-500 dark:text-[#666666] text-xs transition-all ${
+                  isLocked
+                    ? 'opacity-40 cursor-not-allowed'
+                    : 'hover:border-[#1a3a6e]/40 hover:text-gray-700 dark:hover:text-[#999999] disabled:opacity-40 disabled:cursor-not-allowed'
+                }`}
               >
                 {q}
               </button>
             ))}
           </div>
+          {isLocked && (
+            <p className="text-gray-400 dark:text-gray-600 text-xs mt-2">
+              Demo ended — reach out to us for a full conversation
+            </p>
+          )}
         </div>
 
         {/* Messages area */}
@@ -283,6 +339,24 @@ export default function DemoClient() {
             ))}
             {showTyping && <TypingIndicator key="typing" />}
           </AnimatePresence>
+
+          {/* "Book a Call" CTA after demo ends */}
+          {isLocked && (
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.25 }}
+              className="flex justify-start pl-11"
+            >
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#1a3a6e] text-white text-sm font-medium hover:bg-[#2a5298] transition-all duration-200 hover:shadow-[0_0_24px_rgba(74,127,212,0.4)]"
+              >
+                Book a Call with OptiMind →
+              </Link>
+            </motion.div>
+          )}
+
           {/* Scroll anchor */}
           <div className="h-px" />
         </div>
@@ -299,14 +373,26 @@ export default function DemoClient() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              disabled={isLoading}
-              placeholder="Ask anything about OptiMind…"
-              className="flex-1 px-4 py-3 rounded-xl bg-white dark:bg-[#0e0e0e] border border-gray-200 dark:border-[#1f1f1f] text-gray-900 dark:text-white placeholder-gray-300 dark:placeholder-[#333333] focus:outline-none focus:border-[#1a3a6e]/60 transition-colors text-sm disabled:opacity-50"
+              disabled={isLoading || isLocked}
+              placeholder={
+                isLocked
+                  ? 'Demo limit reached — contact us to continue'
+                  : 'Ask anything about OptiMind…'
+              }
+              className={`flex-1 px-4 py-3 rounded-xl border text-sm transition-colors focus:outline-none ${
+                isLocked
+                  ? 'bg-gray-100 dark:bg-[#1a1a1a] border-gray-200 dark:border-[#1f1f1f] text-gray-400 dark:text-gray-600 placeholder-gray-400 dark:placeholder-gray-600 opacity-50 cursor-not-allowed'
+                  : 'bg-white dark:bg-[#0e0e0e] border-gray-200 dark:border-[#1f1f1f] text-gray-900 dark:text-white placeholder-gray-300 dark:placeholder-[#333333] focus:border-[#1a3a6e]/60 disabled:opacity-50'
+              }`}
             />
             <button
               type="submit"
-              disabled={isLoading || !input.trim()}
-              className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#1a3a6e] hover:bg-[#2a5298] disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 shrink-0 hover:shadow-[0_0_20px_rgba(74,127,212,0.25)]"
+              disabled={isLoading || !input.trim() || isLocked}
+              className={`flex items-center justify-center w-11 h-11 rounded-xl bg-[#1a3a6e] transition-all duration-200 shrink-0 ${
+                isLocked
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-[#2a5298] disabled:opacity-40 disabled:cursor-not-allowed hover:shadow-[0_0_20px_rgba(74,127,212,0.25)]'
+              }`}
             >
               {isLoading ? (
                 <span className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin" />
@@ -315,6 +401,11 @@ export default function DemoClient() {
               )}
             </button>
           </form>
+
+          {/* Message counter */}
+          <p className="text-xs mt-2 max-w-3xl mx-auto text-right text-gray-500 dark:text-gray-400">
+            {counterText}
+          </p>
 
           {/* Mobile disclaimer */}
           <p className="md:hidden text-center text-gray-300 dark:text-[#252525] text-xs mt-3">

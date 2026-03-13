@@ -61,11 +61,10 @@ export default function HomePage() {
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
-              href="/products"
+              href="/demo"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg bg-[#1a3a6e] hover:bg-[#2a5298] text-white font-medium transition-all duration-200 border border-[#2a5298]/40 hover:border-[#4a7fd4]/50 hover:shadow-[0_0_32px_rgba(74,127,212,0.28)] text-sm"
             >
-              See Our Products
-              <ArrowRight size={15} />
+              Try Live Demo →
             </Link>
             <Link
               href="/contact"
@@ -74,6 +73,9 @@ export default function HomePage() {
               Contact Us
             </Link>
           </div>
+          <p className="text-sm text-gray-400 dark:text-gray-500 mt-3 text-center">
+            No signup required · 5 message free trial
+          </p>
 
           {/* Trust bar */}
           <div className="mt-16 flex items-center justify-center gap-6 sm:gap-10 flex-wrap">

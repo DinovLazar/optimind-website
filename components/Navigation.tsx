@@ -45,15 +45,15 @@ export default function Navigation() {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[64px]">
+        <div className="relative flex items-center justify-between h-[64px]">
 
           {/* Home button */}
           <Link href="/" aria-label="Home" className="flex items-center justify-center w-9 h-9 rounded-md text-gray-900 dark:text-white hover:bg-gray-900/[0.08] dark:hover:bg-white/[0.08] transition-colors shrink-0">
             <Home size={22} strokeWidth={2} />
           </Link>
 
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-0.5">
+          {/* Desktop links — absolutely centered */}
+          <div className="hidden md:flex items-center gap-0.5 absolute left-1/2 -translate-x-1/2">
             {navLinks.map((link) => {
               const active = pathname === link.href
               return (
@@ -72,15 +72,9 @@ export default function Navigation() {
             })}
           </div>
 
-          {/* ThemeToggle + CTA + mobile toggle */}
+          {/* ThemeToggle + mobile toggle */}
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <Link
-              href="/contact"
-              className="hidden sm:inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg bg-[#1a3a6e] hover:bg-[#2a5298] text-white transition-all duration-200 border border-[#2a5298]/40 hover:border-[#4a7fd4]/50 hover:shadow-[0_0_24px_rgba(74,127,212,0.22)]"
-            >
-              Book a Demo
-            </Link>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="md:hidden p-2 -mr-1 text-gray-500 dark:text-[#888888] hover:text-gray-900 dark:hover:text-white transition-colors"
@@ -120,12 +114,6 @@ export default function Navigation() {
                   </Link>
                 )
               })}
-              <Link
-                href="/contact"
-                className="mt-2 px-4 py-3 text-sm font-medium rounded-lg bg-[#1a3a6e] hover:bg-[#2a5298] text-white text-center transition-colors"
-              >
-                Book a Demo
-              </Link>
             </div>
           </motion.div>
         )}

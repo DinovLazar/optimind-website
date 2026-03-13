@@ -30,6 +30,7 @@ const config: Config = {
         'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
         'spin-slow': 'spin 8s linear infinite',
+        'demo-glow': 'demo-glow 2.4s ease-in-out infinite',
       },
       keyframes: {
         'pulse-glow': {
@@ -39,6 +40,10 @@ const config: Config = {
         'float': {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-12px)' },
+        },
+        'demo-glow': {
+          '0%, 100%': { boxShadow: '0 0 0px rgba(74,127,212,0)' },
+          '50%': { boxShadow: '0 0 14px rgba(74,127,212,0.45)' },
         },
       },
     },
