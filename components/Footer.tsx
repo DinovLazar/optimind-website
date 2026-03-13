@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
 const nav = [
   { href: '/',         label: 'Home' },
@@ -23,7 +22,6 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-2.5 group w-fit">
-              <Image src="/logonew.png" alt="OptiMind logo" width={36} height={36} />
               <span className="font-heading font-bold text-[17px] text-white tracking-tight">
                 OptiMind
               </span>

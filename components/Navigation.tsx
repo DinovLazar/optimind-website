@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
-import Image from 'next/image'
+import { Menu, X, Home } from 'lucide-react'
 
 const navLinks = [
   { href: '/',         label: 'Home' },
@@ -47,12 +46,9 @@ export default function Navigation() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-[64px]">
 
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-            <Image src="/logonew.png" alt="OptiMind logo" width={36} height={36} className="transition-transform duration-200 group-hover:scale-105" />
-            <span className="font-heading font-bold text-[17px] text-white tracking-tight select-none">
-              OptiMind
-            </span>
+          {/* Home button */}
+          <Link href="/" aria-label="Home" className="flex items-center justify-center w-9 h-9 rounded-md text-white hover:bg-white/[0.08] transition-colors shrink-0">
+            <Home size={22} strokeWidth={2} />
           </Link>
 
           {/* Desktop links */}
