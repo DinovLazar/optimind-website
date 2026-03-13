@@ -34,17 +34,17 @@ export default function ProductsPage() {
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 mesh-gradient" />
         <div className="absolute inset-0 grid-overlay" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-50 dark:to-[#0a0a0a]" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <p className="text-[#1a3a6e] text-xs font-semibold uppercase tracking-[0.18em] mb-4">
               Products
             </p>
-            <h1 className="font-heading text-5xl sm:text-6xl font-bold text-white tracking-tight mb-5">
+            <h1 className="font-heading text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white tracking-tight mb-5">
               What we build.
             </h1>
-            <p className="text-[#777777] text-xl max-w-xl mx-auto leading-relaxed">
+            <p className="text-gray-500 dark:text-[#777777] text-xl max-w-xl mx-auto leading-relaxed">
               Practical AI tools for real businesses. Starting with the hardest part — customer
               support.
             </p>
@@ -53,7 +53,7 @@ export default function ProductsPage() {
       </section>
 
       {/* ── Customer Support Agent ───────────────────────── */}
-      <section className="py-16 bg-[#0a0a0a]">
+      <section className="py-16 bg-gray-50 dark:bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="relative rounded-2xl border border-[#1a3a6e]/30 bg-gradient-to-br from-[#0c1422] via-[#0e1118] to-[#0a0a0a] overflow-hidden">
@@ -119,30 +119,30 @@ export default function ProductsPage() {
       </section>
 
       {/* ── Weekly Newsletter Agent ──────────────────────── */}
-      <section className="pb-24 bg-[#0a0a0a]">
+      <section className="pb-24 bg-gray-50 dark:bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
-            <div className="relative rounded-2xl border border-[#161616] bg-[#080808] overflow-hidden opacity-60">
+            <div className="relative rounded-2xl border border-gray-200 dark:border-[#161616] bg-gray-100/50 dark:bg-[#080808] overflow-hidden opacity-60">
               <div className="p-8 sm:p-12 lg:p-16">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
                   {/* Left: copy */}
                   <div>
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#141414] border border-[#222222] text-[#444444] text-xs font-semibold mb-7">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 dark:bg-[#141414] border border-gray-200 dark:border-[#222222] text-gray-400 dark:text-[#444444] text-xs font-semibold mb-7">
                       <Clock size={11} strokeWidth={2.5} />
                       Coming Soon
                     </div>
 
-                    <h2 className="font-heading text-4xl sm:text-5xl font-bold text-[#444444] tracking-tight mb-5 leading-[1.1]">
+                    <h2 className="font-heading text-4xl sm:text-5xl font-bold text-gray-400 dark:text-[#444444] tracking-tight mb-5 leading-[1.1]">
                       Weekly Newsletter Agent
                     </h2>
 
-                    <p className="text-[#333333] text-lg leading-relaxed mb-8">
+                    <p className="text-gray-400 dark:text-[#333333] text-lg leading-relaxed mb-8">
                       Automatically generate and send a weekly newsletter to your customers —
                       personalized, on-brand, zero effort from your team.
                     </p>
 
-                    <p className="text-[#2a2a2a] text-sm leading-relaxed mb-10">
+                    <p className="text-gray-300 dark:text-[#2a2a2a] text-sm leading-relaxed mb-10">
                       Our newsletter agent will pull from your latest products, announcements, and
                       industry news to craft a professional newsletter that goes out every week —
                       on autopilot.
@@ -150,7 +150,7 @@ export default function ProductsPage() {
 
                     <button
                       disabled
-                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-[#111111] text-[#3a3a3a] font-medium text-sm cursor-not-allowed border border-[#1d1d1d]"
+                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-gray-100 dark:bg-[#111111] text-gray-400 dark:text-[#3a3a3a] font-medium text-sm cursor-not-allowed border border-gray-200 dark:border-[#1d1d1d]"
                     >
                       Notify Me When Available
                       <ArrowRight size={15} />
@@ -159,7 +159,7 @@ export default function ProductsPage() {
 
                   {/* Right: planned features */}
                   <div>
-                    <p className="text-[11px] font-semibold text-[#222222] uppercase tracking-widest mb-5">
+                    <p className="text-[11px] font-semibold text-gray-300 dark:text-[#222222] uppercase tracking-widest mb-5">
                       Planned Features
                     </p>
                     <ul className="space-y-4">
@@ -167,10 +167,10 @@ export default function ProductsPage() {
                         <li key={text} className="flex items-start gap-3.5">
                           <CheckCircle
                             size={16}
-                            className="text-[#222222] flex-shrink-0 mt-0.5"
+                            className="text-gray-300 dark:text-[#222222] flex-shrink-0 mt-0.5"
                             strokeWidth={2}
                           />
-                          <span className="text-[#2e2e2e] text-sm leading-relaxed">{text}</span>
+                          <span className="text-gray-400 dark:text-[#2e2e2e] text-sm leading-relaxed">{text}</span>
                         </li>
                       ))}
                     </ul>
@@ -182,7 +182,7 @@ export default function ProductsPage() {
 
           {/* Bottom CTA */}
           <AnimatedSection delay={0.1} className="mt-14 text-center">
-            <p className="text-[#555555] text-sm mb-4">
+            <p className="text-gray-500 dark:text-[#555555] text-sm mb-4">
               Ready to get started with the Customer Support Agent?
             </p>
             <Link

@@ -39,7 +39,7 @@ export default function AboutPage() {
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 mesh-gradient" />
         <div className="absolute inset-0 grid-overlay opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-50 dark:to-[#0a0a0a]" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
@@ -47,10 +47,10 @@ export default function AboutPage() {
               <p className="text-[#1a3a6e] text-xs font-semibold uppercase tracking-[0.18em] mb-5">
                 About Us
               </p>
-              <h1 className="font-heading text-5xl sm:text-6xl font-bold text-white tracking-tight leading-[1.08] mb-6">
+              <h1 className="font-heading text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white tracking-tight leading-[1.08] mb-6">
                 Built by developers who believe support should be smarter.
               </h1>
-              <p className="text-[#777777] text-xl leading-relaxed">
+              <p className="text-gray-500 dark:text-[#777777] text-xl leading-relaxed">
                 OptiMind was founded with one goal: use AI to make customer support faster,
                 cheaper, and better for everyone. We&apos;re a small, focused team building
                 practical AI tools for real businesses — starting with the most painful part:
@@ -62,10 +62,10 @@ export default function AboutPage() {
       </section>
 
       {/* ── Location badge ───────────────────────────────── */}
-      <section className="pb-6 bg-[#0a0a0a]">
+      <section className="pb-6 bg-gray-50 dark:bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
-            <div className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[#1a1a1a] bg-[#0e0e0e] text-[#555555] text-sm">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-gray-200 dark:border-[#1a1a1a] bg-white dark:bg-[#0e0e0e] text-gray-500 dark:text-[#555555] text-sm">
               <span className="text-base select-none">📍</span>
               Based in Strumica, North Macedonia
             </div>
@@ -74,14 +74,14 @@ export default function AboutPage() {
       </section>
 
       {/* ── Team ─────────────────────────────────────────── */}
-      <section className="py-20 bg-[#0a0a0a]">
+      <section className="py-20 bg-gray-50 dark:bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="mb-12">
               <p className="text-[#1a3a6e] text-xs font-semibold uppercase tracking-[0.18em] mb-4">
                 Team
               </p>
-              <h2 className="font-heading text-4xl font-bold text-white tracking-tight">
+              <h2 className="font-heading text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
                 Meet the team.
               </h2>
             </div>
@@ -90,10 +90,9 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-2xl items-stretch">
             {team.map((member, i) => (
               <AnimatedSection key={member.name} delay={i * 0.1} className="h-full">
-                <div className="h-full flex flex-col p-6 rounded-2xl border border-[#181818] bg-[#0e0e0e] hover:border-[#1a3a6e]/30 transition-all hover:shadow-[0_0_28px_rgba(26,58,110,0.10)] text-center group">
+                <div className="h-full flex flex-col p-6 rounded-2xl border border-gray-200 dark:border-[#181818] bg-white dark:bg-[#0e0e0e] hover:border-[#1a3a6e]/30 transition-all hover:shadow-[0_0_28px_rgba(26,58,110,0.10)] text-center group">
                   {/* Avatar */}
                   <div className="flex-1 flex flex-col items-center justify-start">
-                    {/* TODO: replace with <Image> when photo is ready */}
                     <div className="relative w-[68px] h-[68px] mx-auto mb-4">
                       <div className="w-full h-full rounded-full bg-gradient-to-br from-[#1a3a6e] to-[#0d1f3e] border border-[#2a5298]/30 flex items-center justify-center group-hover:border-[#3b6fd4]/35 transition-colors">
                         <span className="font-heading font-bold text-white text-[18px] tracking-widest select-none">
@@ -101,10 +100,10 @@ export default function AboutPage() {
                         </span>
                       </div>
                     </div>
-                    <h3 className="font-heading font-bold text-white text-[17px] mb-1">
+                    <h3 className="font-heading font-bold text-gray-900 dark:text-white text-[17px] mb-1">
                       {member.name}
                     </h3>
-                    <p className="text-[#555555] text-sm">{member.role}</p>
+                    <p className="text-gray-500 dark:text-[#555555] text-sm">{member.role}</p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -115,8 +114,8 @@ export default function AboutPage() {
 
       {/* ── Values ───────────────────────────────────────── */}
       <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0c0e14] to-[#0a0a0a]" />
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#1a3a6e]/7 rounded-full blur-[90px] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-blue-50/10 to-gray-50 dark:from-[#0a0a0a] dark:via-[#0c0e14] dark:to-[#0a0a0a]" />
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#1a3a6e]/4 dark:bg-[#1a3a6e]/7 rounded-full blur-[90px] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
@@ -124,7 +123,7 @@ export default function AboutPage() {
               <p className="text-[#1a3a6e] text-xs font-semibold uppercase tracking-[0.18em] mb-4">
                 Values
               </p>
-              <h2 className="font-heading text-4xl font-bold text-white tracking-tight">
+              <h2 className="font-heading text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
                 What we stand for.
               </h2>
             </div>
@@ -133,12 +132,12 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {values.map((v, i) => (
               <AnimatedSection key={v.label} delay={i * 0.1}>
-                <div className="h-full p-6 rounded-2xl border border-[#181818] bg-[#0e0e0e] hover:border-[#1a3a6e]/25 transition-colors">
-                  <div className="w-8 h-8 rounded-lg bg-[#1a3a6e]/18 border border-[#1a3a6e]/20 flex items-center justify-center mb-4">
+                <div className="h-full p-6 rounded-2xl border border-gray-200 dark:border-[#181818] bg-white dark:bg-[#0e0e0e] hover:border-[#1a3a6e]/25 transition-colors">
+                  <div className="w-8 h-8 rounded-lg bg-[#1a3a6e]/10 dark:bg-[#1a3a6e]/18 border border-[#1a3a6e]/20 flex items-center justify-center mb-4">
                     <div className="w-2.5 h-2.5 rounded-[3px] bg-[#4a7fd4]" />
                   </div>
-                  <h3 className="font-heading font-bold text-white text-xl mb-3">{v.label}</h3>
-                  <p className="text-[#5a5a5a] text-sm leading-relaxed">{v.description}</p>
+                  <h3 className="font-heading font-bold text-gray-900 dark:text-white text-xl mb-3">{v.label}</h3>
+                  <p className="text-gray-500 dark:text-[#5a5a5a] text-sm leading-relaxed">{v.description}</p>
                 </div>
               </AnimatedSection>
             ))}

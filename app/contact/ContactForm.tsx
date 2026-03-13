@@ -39,14 +39,14 @@ export default function ContactForm() {
   if (submitted) {
     return (
       <div className="flex flex-col items-center justify-center text-center py-16 gap-5">
-        <div className="w-16 h-16 rounded-full bg-[#1a3a6e]/18 border border-[#1a3a6e]/35 flex items-center justify-center">
+        <div className="w-16 h-16 rounded-full bg-[#1a3a6e]/10 dark:bg-[#1a3a6e]/18 border border-[#1a3a6e]/35 flex items-center justify-center">
           <CheckCircle size={28} className="text-[#4a7fd4]" strokeWidth={1.8} />
         </div>
         <div>
-          <h3 className="font-heading font-bold text-white text-2xl mb-2">Message sent!</h3>
-          <p className="text-[#666666] text-sm max-w-xs">
+          <h3 className="font-heading font-bold text-gray-900 dark:text-white text-2xl mb-2">Message sent!</h3>
+          <p className="text-gray-500 dark:text-[#666666] text-sm max-w-xs">
             Thanks for reaching out. We&apos;ll get back to you at{' '}
-            <span className="text-[#888888]">{form.email}</span> within 24 hours.
+            <span className="text-gray-700 dark:text-[#888888]">{form.email}</span> within 24 hours.
           </p>
         </div>
       </div>
@@ -57,8 +57,8 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="flex flex-col gap-1.5">
-          <label className="text-[11px] font-semibold text-[#555555] uppercase tracking-wider">
-            Name <span className="text-[#333333]">*</span>
+          <label className="text-[11px] font-semibold text-gray-500 dark:text-[#555555] uppercase tracking-wider">
+            Name <span className="text-gray-300 dark:text-[#333333]">*</span>
           </label>
           <input
             type="text"
@@ -66,11 +66,11 @@ export default function ContactForm() {
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
             required
-            className="px-4 py-3 rounded-lg bg-[#0e0e0e] border border-[#1d1d1d] text-white placeholder-[#333333] focus:outline-none focus:border-[#1a3a6e] transition-colors text-sm"
+            className="px-4 py-3 rounded-lg bg-white dark:bg-[#0e0e0e] border border-gray-200 dark:border-[#1d1d1d] text-gray-900 dark:text-white placeholder-gray-300 dark:placeholder-[#333333] focus:outline-none focus:border-[#1a3a6e] transition-colors text-sm"
           />
         </div>
         <div className="flex flex-col gap-1.5">
-          <label className="text-[11px] font-semibold text-[#555555] uppercase tracking-wider">
+          <label className="text-[11px] font-semibold text-gray-500 dark:text-[#555555] uppercase tracking-wider">
             Company Name
           </label>
           <input
@@ -78,14 +78,14 @@ export default function ContactForm() {
             placeholder="Acme Corp"
             value={form.company}
             onChange={(e) => setForm({ ...form, company: e.target.value })}
-            className="px-4 py-3 rounded-lg bg-[#0e0e0e] border border-[#1d1d1d] text-white placeholder-[#333333] focus:outline-none focus:border-[#1a3a6e] transition-colors text-sm"
+            className="px-4 py-3 rounded-lg bg-white dark:bg-[#0e0e0e] border border-gray-200 dark:border-[#1d1d1d] text-gray-900 dark:text-white placeholder-gray-300 dark:placeholder-[#333333] focus:outline-none focus:border-[#1a3a6e] transition-colors text-sm"
           />
         </div>
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-[11px] font-semibold text-[#555555] uppercase tracking-wider">
-          Email <span className="text-[#333333]">*</span>
+        <label className="text-[11px] font-semibold text-gray-500 dark:text-[#555555] uppercase tracking-wider">
+          Email <span className="text-gray-300 dark:text-[#333333]">*</span>
         </label>
         <input
           type="email"
@@ -93,13 +93,13 @@ export default function ContactForm() {
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
           required
-          className="px-4 py-3 rounded-lg bg-[#0e0e0e] border border-[#1d1d1d] text-white placeholder-[#333333] focus:outline-none focus:border-[#1a3a6e] transition-colors text-sm"
+          className="px-4 py-3 rounded-lg bg-white dark:bg-[#0e0e0e] border border-gray-200 dark:border-[#1d1d1d] text-gray-900 dark:text-white placeholder-gray-300 dark:placeholder-[#333333] focus:outline-none focus:border-[#1a3a6e] transition-colors text-sm"
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-[11px] font-semibold text-[#555555] uppercase tracking-wider">
-          Message <span className="text-[#333333]">*</span>
+        <label className="text-[11px] font-semibold text-gray-500 dark:text-[#555555] uppercase tracking-wider">
+          Message <span className="text-gray-300 dark:text-[#333333]">*</span>
         </label>
         <textarea
           placeholder="Tell us about your business and what you're looking for..."
@@ -107,11 +107,11 @@ export default function ContactForm() {
           onChange={(e) => setForm({ ...form, message: e.target.value })}
           required
           rows={6}
-          className="px-4 py-3 rounded-lg bg-[#0e0e0e] border border-[#1d1d1d] text-white placeholder-[#333333] focus:outline-none focus:border-[#1a3a6e] transition-colors text-sm resize-none"
+          className="px-4 py-3 rounded-lg bg-white dark:bg-[#0e0e0e] border border-gray-200 dark:border-[#1d1d1d] text-gray-900 dark:text-white placeholder-gray-300 dark:placeholder-[#333333] focus:outline-none focus:border-[#1a3a6e] transition-colors text-sm resize-none"
         />
       </div>
 
-      {error && <p className="text-red-400/90 text-xs leading-relaxed">{error}</p>}
+      {error && <p className="text-red-500 dark:text-red-400/90 text-xs leading-relaxed">{error}</p>}
 
       <button
         type="submit"

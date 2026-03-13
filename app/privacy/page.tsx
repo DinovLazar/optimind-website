@@ -14,10 +14,10 @@ export default function PrivacyPage() {
           <p className="text-[#1a3a6e] text-xs font-semibold uppercase tracking-[0.18em] mb-4">
             Legal
           </p>
-          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-white tracking-tight mb-3">
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white tracking-tight mb-3">
             Privacy Policy
           </h1>
-          <p className="text-[#444444] text-sm">Last updated: January 1, 2025</p>
+          <p className="text-gray-400 dark:text-[#444444] text-sm">Last updated: January 1, 2025</p>
         </div>
 
         <div className="prose-dark">
@@ -74,9 +74,9 @@ export default function PrivacyPage() {
           </p>
           <p>Types of cookies we may use:</p>
           <ul>
-            <li><strong style={{ color: '#cccccc' }}>Essential cookies:</strong> Required for the website to function properly.</li>
-            <li><strong style={{ color: '#cccccc' }}>Analytics cookies:</strong> Help us understand how visitors interact with our site.</li>
-            <li><strong style={{ color: '#cccccc' }}>Preference cookies:</strong> Remember your settings and preferences.</li>
+            <li><strong className="text-gray-800 dark:text-[#cccccc]">Essential cookies:</strong> Required for the website to function properly.</li>
+            <li><strong className="text-gray-800 dark:text-[#cccccc]">Analytics cookies:</strong> Help us understand how visitors interact with our site.</li>
+            <li><strong className="text-gray-800 dark:text-[#cccccc]">Preference cookies:</strong> Remember your settings and preferences.</li>
           </ul>
 
           <h2>4. Third-Party Services</h2>
@@ -85,11 +85,11 @@ export default function PrivacyPage() {
           </p>
           <ul>
             <li>
-              <strong style={{ color: '#cccccc' }}>Resend</strong> — Used to send transactional emails (contact form confirmations and notifications). Resend processes your email address and name when you submit our contact form. For more information, see{' '}
+              <strong className="text-gray-800 dark:text-[#cccccc]">Resend</strong> — Used to send transactional emails (contact form confirmations and notifications). Resend processes your email address and name when you submit our contact form. For more information, see{' '}
               <a href="https://resend.com/privacy" target="_blank" rel="noopener noreferrer">Resend&apos;s Privacy Policy</a>.
             </li>
             <li>
-              <strong style={{ color: '#cccccc' }}>Vercel</strong> — Our website is hosted on Vercel, which may collect server logs and analytics. See{' '}
+              <strong className="text-gray-800 dark:text-[#cccccc]">Vercel</strong> — Our website is hosted on Vercel, which may collect server logs and analytics. See{' '}
               <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel&apos;s Privacy Policy</a>.
             </li>
           </ul>
@@ -112,11 +112,11 @@ export default function PrivacyPage() {
             regarding your personal data:
           </p>
           <ul>
-            <li><strong style={{ color: '#cccccc' }}>Access:</strong> Request a copy of the personal data we hold about you.</li>
-            <li><strong style={{ color: '#cccccc' }}>Correction:</strong> Request correction of inaccurate or incomplete data.</li>
-            <li><strong style={{ color: '#cccccc' }}>Deletion:</strong> Request deletion of your personal data, subject to legal obligations.</li>
-            <li><strong style={{ color: '#cccccc' }}>Objection:</strong> Object to the processing of your personal data.</li>
-            <li><strong style={{ color: '#cccccc' }}>Portability:</strong> Request a portable copy of your data in a structured format.</li>
+            <li><strong className="text-gray-800 dark:text-[#cccccc]">Access:</strong> Request a copy of the personal data we hold about you.</li>
+            <li><strong className="text-gray-800 dark:text-[#cccccc]">Correction:</strong> Request correction of inaccurate or incomplete data.</li>
+            <li><strong className="text-gray-800 dark:text-[#cccccc]">Deletion:</strong> Request deletion of your personal data, subject to legal obligations.</li>
+            <li><strong className="text-gray-800 dark:text-[#cccccc]">Objection:</strong> Object to the processing of your personal data.</li>
+            <li><strong className="text-gray-800 dark:text-[#cccccc]">Portability:</strong> Request a portable copy of your data in a structured format.</li>
           </ul>
           <p>
             To exercise any of these rights, please contact us at{' '}

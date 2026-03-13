@@ -41,17 +41,17 @@ function TypingIndicator() {
       className="flex gap-3 items-end"
     >
       <AriaAvatar />
-      <div className="bg-[#0e0e0e] border border-[#1f1f1f] rounded-2xl rounded-bl-sm px-4 py-3.5 flex items-center gap-1.5">
+      <div className="bg-white dark:bg-[#0e0e0e] border border-gray-200 dark:border-[#1f1f1f] rounded-2xl rounded-bl-sm px-4 py-3.5 flex items-center gap-1.5">
         <span
-          className="w-2 h-2 rounded-full bg-[#3a3a3a] animate-bounce"
+          className="w-2 h-2 rounded-full bg-gray-300 dark:bg-[#3a3a3a] animate-bounce"
           style={{ animationDelay: '0ms', animationDuration: '1s' }}
         />
         <span
-          className="w-2 h-2 rounded-full bg-[#3a3a3a] animate-bounce"
+          className="w-2 h-2 rounded-full bg-gray-300 dark:bg-[#3a3a3a] animate-bounce"
           style={{ animationDelay: '160ms', animationDuration: '1s' }}
         />
         <span
-          className="w-2 h-2 rounded-full bg-[#3a3a3a] animate-bounce"
+          className="w-2 h-2 rounded-full bg-gray-300 dark:bg-[#3a3a3a] animate-bounce"
           style={{ animationDelay: '320ms', animationDuration: '1s' }}
         />
       </div>
@@ -74,7 +74,7 @@ function MessageBubble({ message }: { message: Message }) {
         className={`max-w-[78%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap break-words ${
           isUser
             ? 'bg-[#1a3a6e] text-white rounded-br-sm'
-            : 'bg-[#0e0e0e] border border-[#1f1f1f] text-[#cccccc] rounded-bl-sm'
+            : 'bg-white dark:bg-[#0e0e0e] border border-gray-200 dark:border-[#1f1f1f] text-gray-700 dark:text-[#cccccc] rounded-bl-sm'
         }`}
       >
         {message.content}
@@ -193,10 +193,10 @@ export default function DemoClient() {
   )
 
   return (
-    <div className="h-screen bg-[#0a0a0a] flex overflow-hidden">
+    <div className="h-screen bg-gray-50 dark:bg-[#0a0a0a] flex overflow-hidden">
 
       {/* ── Left panel (desktop only) ──────────────────────────── */}
-      <div className="hidden md:flex flex-col w-[40%] pt-16 border-r border-[#181818] overflow-hidden">
+      <div className="hidden md:flex flex-col w-[40%] pt-16 border-r border-gray-200 dark:border-[#181818] overflow-hidden">
         <div className="flex-1 px-8 lg:px-12 py-12 overflow-y-auto">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -206,10 +206,10 @@ export default function DemoClient() {
             <p className="text-[#1a3a6e] text-xs font-semibold uppercase tracking-[0.18em] mb-5">
               Live Demo
             </p>
-            <h1 className="font-heading text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.08] mb-5">
+            <h1 className="font-heading text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white tracking-tight leading-[1.08] mb-5">
               Meet Aria.
             </h1>
-            <p className="text-[#555555] text-base leading-relaxed mb-10">
+            <p className="text-gray-500 dark:text-[#555555] text-base leading-relaxed mb-10">
               This is a live demo of the kind of AI support agent OptiMind builds
               for your business. Ask anything about our services.
             </p>
@@ -224,9 +224,9 @@ export default function DemoClient() {
                   transition={{ duration: 0.4, delay: 0.2 + i * 0.08 }}
                   onClick={() => sendMessage(q)}
                   disabled={isLoading}
-                  className="text-left px-4 py-3 rounded-xl border border-[#1a1a1a] bg-[#0d0d0d] text-[#777777] text-sm hover:border-[#1a3a6e]/50 hover:text-[#aaaaaa] hover:bg-[#111111] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed group"
+                  className="text-left px-4 py-3 rounded-xl border border-gray-200 dark:border-[#1a1a1a] bg-white dark:bg-[#0d0d0d] text-gray-500 dark:text-[#777777] text-sm hover:border-[#1a3a6e]/50 hover:text-gray-700 dark:hover:text-[#aaaaaa] hover:bg-gray-50 dark:hover:bg-[#111111] transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed group"
                 >
-                  <span className="text-[#2a2a2a] group-hover:text-[#444444] mr-2 transition-colors">
+                  <span className="text-gray-300 dark:text-[#2a2a2a] group-hover:text-gray-400 dark:group-hover:text-[#444444] mr-2 transition-colors">
                     →
                   </span>
                   {q}
@@ -237,12 +237,12 @@ export default function DemoClient() {
         </div>
 
         {/* Disclaimer */}
-        <div className="px-8 lg:px-12 py-6 border-t border-[#141414]">
-          <p className="text-[#333333] text-xs leading-relaxed">
+        <div className="px-8 lg:px-12 py-6 border-t border-gray-100 dark:border-[#141414]">
+          <p className="text-gray-400 dark:text-[#333333] text-xs leading-relaxed">
             This is a demo assistant. For real inquiries contact{' '}
             <a
               href="mailto:hello@optimind000.com"
-              className="text-[#444444] hover:text-[#777777] transition-colors underline underline-offset-2"
+              className="text-gray-500 dark:text-[#444444] hover:text-gray-700 dark:hover:text-[#777777] transition-colors underline underline-offset-2"
             >
               hello@optimind000.com
             </a>
@@ -254,8 +254,8 @@ export default function DemoClient() {
       <div className="flex-1 flex flex-col overflow-hidden pt-16">
 
         {/* Mobile header */}
-        <div className="md:hidden border-b border-[#181818] bg-[#0a0a0a] px-4 py-4 shrink-0">
-          <p className="font-heading font-bold text-white text-base mb-3">
+        <div className="md:hidden border-b border-gray-200 dark:border-[#181818] bg-gray-50 dark:bg-[#0a0a0a] px-4 py-4 shrink-0">
+          <p className="font-heading font-bold text-gray-900 dark:text-white text-base mb-3">
             Meet Aria
           </p>
           <div className="flex gap-2 flex-wrap">
@@ -264,7 +264,7 @@ export default function DemoClient() {
                 key={q}
                 onClick={() => sendMessage(q)}
                 disabled={isLoading}
-                className="px-3 py-1.5 rounded-lg border border-[#1f1f1f] bg-[#0e0e0e] text-[#666666] text-xs hover:border-[#1a3a6e]/40 hover:text-[#999999] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                className="px-3 py-1.5 rounded-lg border border-gray-200 dark:border-[#1f1f1f] bg-white dark:bg-[#0e0e0e] text-gray-500 dark:text-[#666666] text-xs hover:border-[#1a3a6e]/40 hover:text-gray-700 dark:hover:text-[#999999] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 {q}
               </button>
@@ -288,7 +288,7 @@ export default function DemoClient() {
         </div>
 
         {/* Input bar */}
-        <div className="shrink-0 border-t border-[#181818] bg-[#0a0a0a] px-4 md:px-8 py-4">
+        <div className="shrink-0 border-t border-gray-200 dark:border-[#181818] bg-gray-50 dark:bg-[#0a0a0a] px-4 md:px-8 py-4">
           <form
             onSubmit={handleSubmit}
             className="flex items-center gap-3 max-w-3xl mx-auto"
@@ -301,7 +301,7 @@ export default function DemoClient() {
               onKeyDown={handleKeyDown}
               disabled={isLoading}
               placeholder="Ask anything about OptiMind…"
-              className="flex-1 px-4 py-3 rounded-xl bg-[#0e0e0e] border border-[#1f1f1f] text-white placeholder-[#333333] focus:outline-none focus:border-[#1a3a6e]/60 transition-colors text-sm disabled:opacity-50"
+              className="flex-1 px-4 py-3 rounded-xl bg-white dark:bg-[#0e0e0e] border border-gray-200 dark:border-[#1f1f1f] text-gray-900 dark:text-white placeholder-gray-300 dark:placeholder-[#333333] focus:outline-none focus:border-[#1a3a6e]/60 transition-colors text-sm disabled:opacity-50"
             />
             <button
               type="submit"
@@ -317,11 +317,11 @@ export default function DemoClient() {
           </form>
 
           {/* Mobile disclaimer */}
-          <p className="md:hidden text-center text-[#252525] text-xs mt-3">
+          <p className="md:hidden text-center text-gray-300 dark:text-[#252525] text-xs mt-3">
             Demo only · Contact{' '}
             <a
               href="mailto:hello@optimind000.com"
-              className="text-[#333333] hover:text-[#555555] transition-colors"
+              className="text-gray-400 dark:text-[#333333] hover:text-gray-600 dark:hover:text-[#555555] transition-colors"
             >
               hello@optimind000.com
             </a>

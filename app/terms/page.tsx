@@ -14,10 +14,10 @@ export default function TermsPage() {
           <p className="text-[#1a3a6e] text-xs font-semibold uppercase tracking-[0.18em] mb-4">
             Legal
           </p>
-          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-white tracking-tight mb-3">
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white tracking-tight mb-3">
             Terms &amp; Conditions
           </h1>
-          <p className="text-[#444444] text-sm">Last updated: January 1, 2025</p>
+          <p className="text-gray-400 dark:text-[#444444] text-sm">Last updated: January 1, 2025</p>
         </div>
 
         <div className="prose-dark">

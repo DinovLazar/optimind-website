@@ -3,6 +3,7 @@ import { DM_Sans, Syne } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import Providers from '@/components/Providers'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -51,15 +52,18 @@ export const metadata: Metadata = {
       'Intelligent support agents that handle customer emails and live chat — 24/7, at a fraction of the cost.',
   },
   robots: { index: true, follow: true },
+  icons: { icon: '/icon' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${syne.variable}`}>
-      <body className="font-sans bg-background text-white antialiased">
-        <Navigation />
-        <main>{children}</main>
-        <Footer />
+    <html lang="en" className={`${dmSans.variable} ${syne.variable}`} suppressHydrationWarning>
+      <body className="font-sans bg-gray-50 dark:bg-[#0a0a0a] text-gray-900 dark:text-white antialiased">
+        <Providers>
+          <Navigation />
+          <main>{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   )

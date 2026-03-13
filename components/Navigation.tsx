@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Home } from 'lucide-react'
+import ThemeToggle from './ThemeToggle'
 
 const navLinks = [
   { href: '/',         label: 'Home' },
@@ -39,7 +40,7 @@ export default function Navigation() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#0a0a0a]/85 backdrop-blur-2xl border-b border-[#181818]'
+          ? 'bg-white/85 dark:bg-[#0a0a0a]/85 backdrop-blur-2xl border-b border-gray-200 dark:border-[#181818]'
           : 'bg-transparent'
       }`}
     >
@@ -47,7 +48,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-[64px]">
 
           {/* Home button */}
-          <Link href="/" aria-label="Home" className="flex items-center justify-center w-9 h-9 rounded-md text-white hover:bg-white/[0.08] transition-colors shrink-0">
+          <Link href="/" aria-label="Home" className="flex items-center justify-center w-9 h-9 rounded-md text-gray-900 dark:text-white hover:bg-gray-900/[0.08] dark:hover:bg-white/[0.08] transition-colors shrink-0">
             <Home size={22} strokeWidth={2} />
           </Link>
 
@@ -61,8 +62,8 @@ export default function Navigation() {
                   href={link.href}
                   className={`px-3.5 py-2 text-sm rounded-md transition-all duration-150 ${
                     active
-                      ? 'text-white bg-white/[0.06]'
-                      : 'text-[#888888] hover:text-white hover:bg-white/[0.04]'
+                      ? 'text-gray-900 dark:text-white bg-gray-900/[0.06] dark:bg-white/[0.06]'
+                      : 'text-gray-500 dark:text-[#888888] hover:text-gray-900 dark:hover:text-white hover:bg-gray-900/[0.04] dark:hover:bg-white/[0.04]'
                   }`}
                 >
                   {link.label}
@@ -71,8 +72,9 @@ export default function Navigation() {
             })}
           </div>
 
-          {/* CTA + mobile toggle */}
-          <div className="flex items-center gap-3">
+          {/* ThemeToggle + CTA + mobile toggle */}
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
             <Link
               href="/contact"
               className="hidden sm:inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg bg-[#1a3a6e] hover:bg-[#2a5298] text-white transition-all duration-200 border border-[#2a5298]/40 hover:border-[#4a7fd4]/50 hover:shadow-[0_0_24px_rgba(74,127,212,0.22)]"
@@ -81,7 +83,7 @@ export default function Navigation() {
             </Link>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 -mr-1 text-[#888888] hover:text-white transition-colors"
+              className="md:hidden p-2 -mr-1 text-gray-500 dark:text-[#888888] hover:text-gray-900 dark:hover:text-white transition-colors"
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -99,7 +101,7 @@ export default function Navigation() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2, ease: 'easeInOut' }}
-            className="md:hidden bg-[#0a0a0a]/95 backdrop-blur-2xl border-b border-[#181818] overflow-hidden"
+            className="md:hidden bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-2xl border-b border-gray-200 dark:border-[#181818] overflow-hidden"
           >
             <div className="px-4 pt-2 pb-5 flex flex-col gap-1">
               {navLinks.map((link) => {
@@ -110,8 +112,8 @@ export default function Navigation() {
                     href={link.href}
                     className={`px-4 py-3 text-sm rounded-lg transition-colors ${
                       active
-                        ? 'text-white bg-white/[0.06]'
-                        : 'text-[#888888] hover:text-white'
+                        ? 'text-gray-900 dark:text-white bg-gray-900/[0.06] dark:bg-white/[0.06]'
+                        : 'text-gray-500 dark:text-[#888888] hover:text-gray-900 dark:hover:text-white'
                     }`}
                   >
                     {link.label}
