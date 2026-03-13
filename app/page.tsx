@@ -14,6 +14,7 @@ import {
   Rocket,
 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
+import Testimonials from '@/components/Testimonials'
 
 export const metadata: Metadata = {
   title: 'OptiMind — AI-Powered Customer Support',
@@ -319,24 +320,27 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Testimonials ─────────────────────────────────── */}
+      <Testimonials />
+
       {/* ── Final CTA ────────────────────────────────────── */}
       <section className="py-24 bg-gray-50 dark:bg-[#0a0a0a]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
-            <div className="relative rounded-2xl border border-[#1a3a6e]/25 bg-gradient-to-br from-[#0c1422] via-[#0d1118] to-[#0a0a0a] p-12 sm:p-16 text-center overflow-hidden">
-              <div className="absolute inset-0 bg-[#1a3a6e]/4 rounded-2xl" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] bg-[#1a3a6e]/12 rounded-full blur-[70px] pointer-events-none" />
+            <div className="relative rounded-2xl border border-[#1a3a6e]/40 dark:border-[#1a3a6e]/25 bg-[#1a3a6e] dark:bg-gradient-to-br dark:from-[#0c1422] dark:via-[#0d1118] dark:to-[#0a0a0a] p-12 sm:p-16 text-center overflow-hidden">
+              <div className="absolute inset-0 bg-white/5 dark:bg-[#1a3a6e]/4 rounded-2xl" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] bg-white/8 dark:bg-[#1a3a6e]/12 rounded-full blur-[70px] pointer-events-none" />
 
               <div className="relative z-10">
                 <h2 className="font-heading text-4xl sm:text-5xl font-bold text-white tracking-tight mb-4">
                   Ready to transform your support?
                 </h2>
-                <p className="text-[#666666] text-lg mb-10 max-w-xl mx-auto">
+                <p className="text-blue-100 dark:text-[#666666] text-lg mb-10 max-w-xl mx-auto">
                   Join the businesses saving time and money with AI-powered customer support.
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-[#1a3a6e] hover:bg-[#2a5298] text-white font-medium text-base transition-all duration-200 border border-[#2a5298]/40 hover:border-[#4a7fd4]/50 hover:shadow-[0_0_44px_rgba(74,127,212,0.32)]"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-[#1a3a6e] hover:bg-blue-50 dark:bg-[#1a3a6e] dark:text-white dark:hover:bg-[#2a5298] font-medium text-base transition-all duration-200 border border-white/30 dark:border-[#2a5298]/40 hover:shadow-[0_0_44px_rgba(255,255,255,0.2)] dark:hover:shadow-[0_0_44px_rgba(74,127,212,0.32)] dark:hover:border-[#4a7fd4]/50"
                 >
                   Get in Touch
                   <ArrowRight size={17} />
