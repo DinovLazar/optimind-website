@@ -4,11 +4,25 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Send } from 'lucide-react'
 import Link from 'next/link'
+import { TextShimmer } from '@/components/TextShimmer'
 
 const MESSAGE_LIMIT = 5
 
+const loadingMessages = [
+  "Let me think about that...",
+  "Good question, one sec...",
+  "On it...",
+  "Pulling that up for you...",
+  "Give me just a moment...",
+  "Looking into that now...",
+  "Almost there...",
+  "Just a sec...",
+  "Working on it...",
+  "Right, so...",
+]
+
 const FINAL_BOT_MESSAGE =
-  "That's all for the demo! If you'd like to learn more or get started with OptiMind, feel free to reach out to us directly. We'd love to chat. 👋"
+  "That's all for the demo. If you want to get something set up for your business, we're easy to reach."
 
 type Message = {
   id: string
@@ -37,7 +51,7 @@ function AriaAvatar() {
   )
 }
 
-function TypingIndicator() {
+function TypingIndicator({ message }: { message: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -47,19 +61,10 @@ function TypingIndicator() {
       className="flex gap-3 items-end"
     >
       <AriaAvatar />
-      <div className="bg-white dark:bg-[#0e0e0e] border border-gray-200 dark:border-[#1f1f1f] rounded-2xl rounded-bl-sm px-4 py-3.5 flex items-center gap-1.5">
-        <span
-          className="w-2 h-2 rounded-full bg-gray-300 dark:bg-[#3a3a3a] animate-bounce"
-          style={{ animationDelay: '0ms', animationDuration: '1s' }}
-        />
-        <span
-          className="w-2 h-2 rounded-full bg-gray-300 dark:bg-[#3a3a3a] animate-bounce"
-          style={{ animationDelay: '160ms', animationDuration: '1s' }}
-        />
-        <span
-          className="w-2 h-2 rounded-full bg-gray-300 dark:bg-[#3a3a3a] animate-bounce"
-          style={{ animationDelay: '320ms', animationDuration: '1s' }}
-        />
+      <div className="bg-white dark:bg-[#0e0e0e] border border-gray-200 dark:border-[#1f1f1f] rounded-2xl rounded-bl-sm px-4 py-3.5 flex items-center">
+        <TextShimmer duration={1.5} spread={2} className="text-sm">
+          {message}
+        </TextShimmer>
       </div>
     </motion.div>
   )
@@ -95,6 +100,7 @@ export default function DemoClient() {
   const [isLoading, setIsLoading] = useState(false)
   const [messageCount, setMessageCount] = useState(0)
   const [isLocked, setIsLocked] = useState(false)
+  const [loadingMessage, setLoadingMessage] = useState(loadingMessages[0])
   const scrollRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -125,6 +131,7 @@ export default function DemoClient() {
       setMessages(updatedMessages)
       setInput('')
       setMessageCount(newCount)
+      setLoadingMessage(loadingMessages[Math.floor(Math.random() * loadingMessages.length)])
 
       // On the 5th message skip the API and show the hardcoded closing message
       if (newCount >= MESSAGE_LIMIT) {
@@ -337,7 +344,7 @@ export default function DemoClient() {
             {visibleMessages.map((msg) => (
               <MessageBubble key={msg.id} message={msg} />
             ))}
-            {showTyping && <TypingIndicator key="typing" />}
+            {showTyping && <TypingIndicator key="typing" message={loadingMessage} />}
           </AnimatePresence>
 
           {/* "Book a Call" CTA after demo ends */}
