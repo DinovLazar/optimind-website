@@ -16,7 +16,6 @@ import {
   Rocket,
 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
-import Testimonials from '@/components/Testimonials'
 
 export default function HomePageClient() {
   return (
@@ -322,9 +321,6 @@ export default function HomePageClient() {
             </div>
           </div>
         </section>
-
-        {/* ── Testimonials ─────────────────────────────────── */}
-        <Testimonials />
 
         {/* ── Final CTA ────────────────────────────────────── */}
         <section className="py-24 bg-gray-50 dark:bg-[#0a0a0a]">

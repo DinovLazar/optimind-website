@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 }
 
 const team = [
-  { initials: 'LD', name: 'Larry Davis',    role: 'Co-Founder & Developer'  },
-  { initials: 'PJ', name: 'Peter Jameson',  role: 'Co-Founder & Researcher' },
-  { initials: 'AJ', name: 'Andrew Jenkins', role: 'Consultant & Partner'    },
+  { initials: 'LD', name: 'Lazar Dinov',    role: 'Co-Founder & Developer'  },
+  { initials: 'PJ', name: 'Petar Jakimov',  role: 'Co-Founder & Researcher' },
+  { initials: 'AJ', name: 'Andrej Jakimov', role: 'Consultant & Partner'    },
 ]
 
 const values = [
