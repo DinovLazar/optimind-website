@@ -83,12 +83,12 @@ export async function GET(req: NextRequest) {
     const dayStartUTC = new Date(Date.UTC(year, month - 1, day, 0, 0, 0))
     const dayEndUTC   = new Date(Date.UTC(year, month - 1, day, 23, 59, 59))
 
-    // Generate all 15-minute slots within the available window
+    // Generate hourly slots within the available window
     const allSlots: Date[] = []
     let cursor = new Date(windowStartUTC)
     while (cursor < windowEndUTC) {
       allSlots.push(new Date(cursor))
-      cursor = new Date(cursor.getTime() + 15 * 60 * 1000)
+      cursor = new Date(cursor.getTime() + 60 * 60 * 1000)
     }
 
     // Fetch busy periods from Google Calendar

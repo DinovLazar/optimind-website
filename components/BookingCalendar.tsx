@@ -42,7 +42,6 @@ function formatSlotLocal(iso: string): string {
   return new Intl.DateTimeFormat('en-US', {
     hour: 'numeric',
     minute: '2-digit',
-    timeZoneName: 'short',
   }).format(new Date(iso))
 }
 
