@@ -16,6 +16,7 @@ import {
   Rocket,
 } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
+import PricingSection from '@/components/PricingSection'
 
 export default function HomePageClient() {
   return (
@@ -261,6 +262,9 @@ export default function HomePageClient() {
             </div>
           </div>
         </section>
+
+        {/* ── Pricing ──────────────────────────────────────── */}
+        <PricingSection />
 
         {/* ── How It Works ─────────────────────────────────── */}
         <section className="py-24 relative overflow-hidden">
