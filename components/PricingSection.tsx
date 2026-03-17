@@ -249,11 +249,11 @@ export default function PricingSection() {
           <p className="text-center text-sm text-[#555555] mt-12">
             Not sure which plan is right for you?{' '}
             <Link
-              href="/contact"
+              href="/book"
               className="font-medium hover:underline underline-offset-2"
               style={{ color: '#4a7fd4' }}
             >
-              Book a free 20-min call
+              Book a free 15-min call
             </Link>{' '}
             and we&apos;ll figure it out together. No commitment required.
           </p>

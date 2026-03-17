@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import AnimatedSection from '@/components/AnimatedSection'
 import ContactForm from './ContactForm'
+import BookingCalendar from '@/components/BookingCalendar'
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -31,68 +32,32 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ── Form + Info ──────────────────────────────────── */}
+      {/* ── Form + Booking ────────────────────────────────── */}
       <section className="pb-24 bg-gray-50 dark:bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-14 lg:gap-20 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start">
 
-            {/* Form */}
+            {/* Left — Contact form */}
             <AnimatedSection>
               <ContactForm />
             </AnimatedSection>
 
-            {/* Info sidebar */}
-            <AnimatedSection delay={0.2} className="flex flex-col gap-7">
-
-              {/* Contact emails */}
-              <div className="p-6 rounded-2xl border border-gray-200 dark:border-[#181818] bg-white dark:bg-[#0e0e0e]">
-                <p className="text-[11px] font-semibold text-gray-400 dark:text-[#333333] uppercase tracking-widest mb-5">
-                  Contact
-                </p>
-                <div className="flex flex-col gap-4">
-                  <div>
-                    <p className="text-[11px] text-gray-400 dark:text-[#444444] mb-1.5">General inquiries</p>
-                    <a
-                      href="mailto:hello@optimind000.com"
-                      className="text-gray-500 dark:text-[#888888] hover:text-gray-900 dark:hover:text-white transition-colors text-sm"
-                    >
-                      hello@optimind000.com
-                    </a>
-                  </div>
-                  <div className="border-t border-gray-100 dark:border-[#141414] pt-4">
-                    <p className="text-[11px] text-gray-400 dark:text-[#444444] mb-1.5">Support</p>
-                    <a
-                      href="mailto:support@optimind000.com"
-                      className="text-gray-500 dark:text-[#888888] hover:text-gray-900 dark:hover:text-white transition-colors text-sm"
-                    >
-                      support@optimind000.com
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Book a call */}
+            {/* Right — Booking calendar */}
+            <AnimatedSection delay={0.15}>
               <div className="p-6 rounded-2xl border border-gray-200 dark:border-[#181818] bg-white dark:bg-[#0e0e0e]">
                 <p className="text-[11px] font-semibold text-gray-400 dark:text-[#333333] uppercase tracking-widest mb-3">
                   Book a Call
                 </p>
-                <p className="text-gray-500 dark:text-[#555555] text-sm leading-relaxed">
-                  Prefer to schedule a call? Calendly link coming soon.
+                <h2 className="font-heading text-xl font-bold text-gray-900 dark:text-white mb-1">
+                  Book a free 15-minute call.
+                </h2>
+                <p className="text-gray-500 dark:text-[#555555] text-sm mb-6">
+                  Pick a time and we&apos;ll talk about your business.
                 </p>
-                <p className="text-gray-400 dark:text-[#3a3a3a] text-sm mt-2">
-                  For now, reach out via the form and we&apos;ll get a time on the calendar.
-                </p>
-              </div>
-
-              {/* Response indicator */}
-              <div className="flex items-center gap-3 px-5 py-3.5 rounded-xl border border-gray-100 dark:border-[#161616] bg-white dark:bg-[#0a0a0a]">
-                <span className="w-2 h-2 rounded-full bg-[#4ade80] animate-pulse flex-shrink-0" />
-                <p className="text-gray-500 dark:text-[#555555] text-sm">
-                  Typical response time:{' '}
-                  <span className="text-gray-700 dark:text-[#888888]">under 24 hours</span>
-                </p>
+                <BookingCalendar />
               </div>
             </AnimatedSection>
+
           </div>
         </div>
       </section>
